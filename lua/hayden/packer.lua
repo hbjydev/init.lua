@@ -49,6 +49,10 @@ return require('packer').startup(function(use)
 		  {'rafamadriz/friendly-snippets'},
 	  }
   }
+  use 'j-hui/fidget.nvim'
+
+  use 'gpanders/editorconfig.nvim'
+  use 'numToStr/Comment.nvim'
 
   if packer_bootstrap then
     require('packer').sync()

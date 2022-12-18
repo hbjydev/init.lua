@@ -63,3 +63,5 @@ end)
 
 lsp.nvim_workspace()
 lsp.setup()
+
+require("fidget").setup({})
