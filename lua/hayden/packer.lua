@@ -13,7 +13,9 @@ local packer_bootstrap = ensure_packer()
 
 return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
+
     use { 'catppuccin/nvim', as = 'catppuccin' }
+    use 'nyoom-engineering/oxocarbon.nvim'
 
     use {
         'nvim-lualine/lualine.nvim',
@@ -24,10 +26,12 @@ return require('packer').startup(function(use)
         'nvim-telescope/telescope.nvim', tag = '0.1.0',
         requires = { {'nvim-lua/plenary.nvim'} }
     }
+    use 'nvim-telescope/telescope-ui-select.nvim'
 
     use('nvim-treesitter/nvim-treesitter', {
         run = ':TSUpdate'
     })
+    use 'nvim-treesitter/nvim-treesitter-textobjects'
 
     use 'theprimeagen/harpoon'
     use 'mbbill/undotree'
@@ -61,6 +65,22 @@ return require('packer').startup(function(use)
 
     use { 'rcarriga/nvim-dap-ui', requires = {'mfussenegger/nvim-dap'} }
     use 'leoluz/nvim-dap-go'
+
+    use 'github/copilot.vim'
+
+    use {
+        "folke/noice.nvim",
+        requires = {
+            -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+            "MunifTanjim/nui.nvim",
+            -- OPTIONAL:
+            --   `nvim-notify` is only needed, if you want to use the notification view.
+            --   If not available, we use `mini` as the fallback
+            "rcarriga/nvim-notify",
+        }
+    }
+
+    use 'cvigilv/esqueleto.nvim'
 
     if packer_bootstrap then
         require('packer').sync()

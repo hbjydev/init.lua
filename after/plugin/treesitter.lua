@@ -1,49 +1,65 @@
 require'nvim-treesitter.configs'.setup {
-  -- A list of parser names, or "all"
-  ensure_installed = {
-	"c",
-	"cpp",
-	"lua",
-	"go",
-	"typescript",
-	"javascript",
-	"help",
-	"json",
-	"yaml",
-	"python",
-	"nix",
-	"php",
-	"bash",
-	"css",
-	"cmake",
-	"dockerfile",
-	"git_rebase",
-	"gitcommit",
-	"gomod",
-	"gowork",
-	"hcl",
-	"html",
-	"jq",
-	"jsdoc",
-	"latex",
-	"make",
-	"markdown",
-	"phpdoc",
-	"prisma",
-	"proto",
-	"rego",
-	"toml",
-	"tsx",
-  },
+    textobjects = {
+        select = {
+            enable = true,
+            lookahead = true,
 
-  -- Install parsers synchronously (only applied to `ensure_installed`)
-  sync_install = false,
+            keymaps = {
+                ["af"] = "@function.outer",
+                ["if"] = "@function.inner",
+                ["ac"] = "@class.outer",
+                ["ic"] = "@class.inner",
+            },
 
-  -- Automatically install missing parsers when entering buffer
-  -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
-  auto_install = true,
+            selection_modes = {
+                ['@parameter.outer'] = 'v', -- charwise
+                ['@function.outer'] = 'V', -- linewise
+                ['@class.outer'] = '<c-v>', -- blockwise
+            },
+        },
+    },
 
-  highlight = {
-    enable = true,
-  },
+    sync_install = false,
+
+    auto_install = true,
+
+    highlight = {
+        enable = true,
+    },
+
+    ensure_installed = {
+        "c",
+        "cpp",
+        "lua",
+        "go",
+        "typescript",
+        "javascript",
+        "help",
+        "json",
+        "yaml",
+        "python",
+        "nix",
+        "php",
+        "bash",
+        "css",
+        "cmake",
+        "dockerfile",
+        "git_rebase",
+        "gitcommit",
+        "gomod",
+        "gowork",
+        "hcl",
+        "html",
+        "jq",
+        "jsdoc",
+        "latex",
+        "make",
+        "markdown",
+        "phpdoc",
+        "prisma",
+        "proto",
+        "rego",
+        "toml",
+        "tsx",
+    },
 }

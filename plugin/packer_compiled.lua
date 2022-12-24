@@ -114,10 +114,20 @@ _G.packer_plugins = {
     path = "/home/hayden/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
+  ["copilot.vim"] = {
+    loaded = true,
+    path = "/home/hayden/.local/share/nvim/site/pack/packer/start/copilot.vim",
+    url = "https://github.com/github/copilot.vim"
+  },
   ["editorconfig.nvim"] = {
     loaded = true,
     path = "/home/hayden/.local/share/nvim/site/pack/packer/start/editorconfig.nvim",
     url = "https://github.com/gpanders/editorconfig.nvim"
+  },
+  ["esqueleto.nvim"] = {
+    loaded = true,
+    path = "/home/hayden/.local/share/nvim/site/pack/packer/start/esqueleto.nvim",
+    url = "https://github.com/cvigilv/esqueleto.nvim"
   },
   ["fidget.nvim"] = {
     loaded = true,
@@ -154,6 +164,16 @@ _G.packer_plugins = {
     path = "/home/hayden/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
+  ["noice.nvim"] = {
+    loaded = true,
+    path = "/home/hayden/.local/share/nvim/site/pack/packer/start/noice.nvim",
+    url = "https://github.com/folke/noice.nvim"
+  },
+  ["nui.nvim"] = {
+    loaded = true,
+    path = "/home/hayden/.local/share/nvim/site/pack/packer/start/nui.nvim",
+    url = "https://github.com/MunifTanjim/nui.nvim"
+  },
   ["nvim-cmp"] = {
     loaded = true,
     path = "/home/hayden/.local/share/nvim/site/pack/packer/start/nvim-cmp",
@@ -179,16 +199,31 @@ _G.packer_plugins = {
     path = "/home/hayden/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
   },
+  ["nvim-notify"] = {
+    loaded = true,
+    path = "/home/hayden/.local/share/nvim/site/pack/packer/start/nvim-notify",
+    url = "https://github.com/rcarriga/nvim-notify"
+  },
   ["nvim-treesitter"] = {
     loaded = true,
     path = "/home/hayden/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
+  },
+  ["nvim-treesitter-textobjects"] = {
+    loaded = true,
+    path = "/home/hayden/.local/share/nvim/site/pack/packer/start/nvim-treesitter-textobjects",
+    url = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects"
   },
   ["nvim-web-devicons"] = {
     loaded = false,
     needs_bufread = false,
     path = "/home/hayden/.local/share/nvim/site/pack/packer/opt/nvim-web-devicons",
     url = "https://github.com/kyazdani42/nvim-web-devicons"
+  },
+  ["oxocarbon.nvim"] = {
+    loaded = true,
+    path = "/home/hayden/.local/share/nvim/site/pack/packer/start/oxocarbon.nvim",
+    url = "https://github.com/nyoom-engineering/oxocarbon.nvim"
   },
   ["packer.nvim"] = {
     loaded = true,
@@ -199,6 +234,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/hayden/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
+  },
+  ["telescope-ui-select.nvim"] = {
+    loaded = true,
+    path = "/home/hayden/.local/share/nvim/site/pack/packer/start/telescope-ui-select.nvim",
+    url = "https://github.com/nvim-telescope/telescope-ui-select.nvim"
   },
   ["telescope.nvim"] = {
     loaded = true,

@@ -3,7 +3,12 @@ require("catppuccin").setup {
 }
 
 function ColorMyPencils(color)
-	color = color or "catppuccin"
+	color = color or "oxocarbon"
+
+    if color == "oxocarbon" then
+        vim.opt.background = "dark"
+    end
+
 	vim.cmd.colorscheme(color)
 end
 
