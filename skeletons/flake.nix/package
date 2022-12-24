@@ -1,0 +1,39 @@
+{
+  description = ''
+    pkg is a program.
+  '';
+
+  outputs = { self, nixpkgs }:
+    {
+      packages.x86_64-linux.pkg = with (import nixpkgs { system = "x86_64-linux"; });
+        stdenv.mkDerivation rec {
+          name = "pkg";
+          version = "1.0.0";
+
+          src = fetchgit {
+            url = "https://github.com/crc-org/crc.git";
+            rev = "db63999a069a1ad8305d64e887835028409240c5";
+            sha256 = sha256:SVgWmgGSz7gw8si6zUWk/AS30MQFtw+HVF1Xi5CFvyk=;
+            deepClone = true;
+          };
+
+          patches = [];
+
+          buildInputs = [
+            bash
+            git
+            gnumake
+            go_1_18
+            gpgme
+          ];
+
+          buildPhase = ''
+            export HOME=$(mktemp -d)
+            make SHELL="${bash.outPath}/bin/bash"
+          '';
+        };
+
+      packages.x86_64-linux.default = self.packages.x86_64-linux.package;
+
+    };
+}
