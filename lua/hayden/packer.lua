@@ -82,6 +82,10 @@ return require('packer').startup(function(use)
 
     use 'cvigilv/esqueleto.nvim'
 
+    use 'lewis6991/gitsigns.nvim'
+
+    use 'glepnir/dashboard-nvim'
+
     if packer_bootstrap then
         require('packer').sync()
     end

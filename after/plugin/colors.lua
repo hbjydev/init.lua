@@ -16,10 +16,10 @@ function ColorMyPencils(color)
         require("catppuccin").setup {
             flavour = "macchiato"
         }
+        lualine.setup(lualine_settings)
     end
 
 	vim.cmd.colorscheme(color)
-    lualine.setup(lualine_settings)
 end
 
 ColorMyPencils()
