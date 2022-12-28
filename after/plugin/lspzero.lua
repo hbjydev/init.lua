@@ -24,7 +24,6 @@ lsp.ensure_installed {
 	"ansiblels",
 	"bufls",
 	"cmake",
-	"denols",
 	"prismals",
 	"html",
 }
