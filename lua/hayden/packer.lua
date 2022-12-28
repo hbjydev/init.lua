@@ -59,6 +59,8 @@ return require('packer').startup(function(use)
         }
     }
     use 'j-hui/fidget.nvim'
+    use 'jose-elias-alvarez/null-ls.nvim'
+    use 'jay-babu/mason-null-ls.nvim'
 
     use 'gpanders/editorconfig.nvim'
     use 'numToStr/Comment.nvim'
