@@ -9,7 +9,6 @@ mason_null_ls.setup {
         'golines',
         'gomodifytags',
         'gotests',
-        'markdownlint',
         'phpcs',
         'phpstan',
         'shellcheck',
