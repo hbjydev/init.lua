@@ -84,7 +84,7 @@ local function getMode()
 end
 
 local function getLineNo()
-    return "%#Normal# %l:%c "
+    return "%#@comment# %l:%c %#Normal#"
 end
 
 local function updateModeColors()
@@ -136,6 +136,32 @@ local function getGitStatus()
   }
 end
 
+local function getWordCount()
+    -- if im editing markdown, show me the word count
+    if vim.bo.filetype == "md" or vim.bo.filetype == "markdown" then
+        -- get the word count from vim's internals
+        local wc = vim.fn.wordcount()
+
+        -- get the actual number of words (or selected words if in visual mode)
+        local count = wc.words
+        if not (wc.visual_words == nil) then
+            count = wc.visual_words
+        end
+
+        -- if there is only one word, show "word", not "words"
+        local suffix = "words"
+        if count == 1 then
+            suffix = "word"
+        end
+
+        -- return [xx word(s)]
+        return "%#@comment# [" .. tostring(count) .. " " .. suffix .. "]%#Normal#"
+    else
+        -- return nothing, not in a markdown file
+        return ""
+    end
+end
+
 Statusline = {}
 
 Statusline.active = function()
@@ -151,6 +177,7 @@ Statusline.active = function()
     "%=%#StatusLineExtra#",
     getGitStatus(),
     getFiletype(),
+    getWordCount(),
     getLineNo(),
   }
 end
