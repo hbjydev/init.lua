@@ -8,6 +8,7 @@ lsp.ensure_installed {
 	"cssmodules_ls",
 	"bashls",
 	"dockerls",
+    "denols",
 	"tsserver",
 	"eslint",
 	"sumneko_lua",
@@ -66,6 +67,13 @@ local cmp_mappings = lsp.defaults.cmp_mappings {
 	["<C-y>"] = cmp.mapping.confirm({ select = true }),
 	["<C-Space>"] = cmp.mapping.complete(),
 }
+
+-- disable completion with tab
+cmp_mappings['<Tab>'] = nil
+cmp_mappings['<S-Tab>'] = nil
+
+-- disable confirm with Enter key
+cmp_mappings['<CR>'] = nil
 
 lsp.set_preferences {
 	sign_icons = {
