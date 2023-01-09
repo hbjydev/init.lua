@@ -61,5 +61,6 @@ require'nvim-treesitter.configs'.setup {
         "rego",
         "toml",
         "tsx",
+        "fennel",
     },
 }
