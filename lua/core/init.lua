@@ -25,6 +25,7 @@ hvim.modules('ui', {
     'dashboard',
     'hvim',
     'hydra',
+    'nvimtree',
     'tabs',
 })
 
