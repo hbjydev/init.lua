@@ -23,7 +23,9 @@ hvim.modules('tools', {
 
 hvim.modules('ui', {
     'dashboard',
+    'hvim',
     'hydra',
+    'tabs',
 })
 
 hvim.setup()

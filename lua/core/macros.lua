@@ -1,4 +1,11 @@
-local M = {}
+local M = {
+    diagnostic_icons = {
+        error = '',
+        warn = '',
+        hint = '',
+        info = '',
+    }
+}
 
 function M.ensurelazy()
     local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"

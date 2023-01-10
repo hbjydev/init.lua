@@ -155,20 +155,23 @@ hvim.pack {
 
             vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
             vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
-            vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
-            vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
+            vim.keymap.set("n", "<leader>ws", function() vim.lsp.buf.workspace_symbol() end, opts)
+            vim.keymap.set("n", "<leader>d", function() vim.diagnostic.open_float() end, opts)
             vim.keymap.set("n", "]d", function() vim.diagnostic.goto_next() end, opts)
             vim.keymap.set("n", "[d", function() vim.diagnostic.goto_prev() end, opts)
-            vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
-            vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
-            vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
+            vim.keymap.set("n", "<leader>ca", function() vim.lsp.buf.code_action() end, opts)
+            vim.keymap.set("n", "<leader>rr", function() vim.lsp.buf.references() end, opts)
+            vim.keymap.set("n", "<leader>rn", function() vim.lsp.buf.rename() end, opts)
             vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
             vim.keymap.set("n", "<leader>F", function() vim.lsp.buf.format() end, opts)
 
             vim.keymap.set("n", "<leader>ds", builtin.lsp_document_symbols, opts)
         end)
 
-        lsp.nvim_workspace()
+        lsp.nvim_workspace {
+            library = vim.api.nvim_get_runtime_file('', true)
+        }
+
         lsp.setup()
 
         require("fidget").setup {}
@@ -190,7 +193,7 @@ hvim.pack {
             automatic_setup = true,
         }
 
-        mason_null_ls.setup_handlers()
+        mason_null_ls.setup_handlers {}
 
         null_ls.setup()
     end
