@@ -30,6 +30,7 @@ hvim.pack {
 
     config = function ()
         local lsp = require('lsp-zero')
+        local util = require('lspconfig.util')
         local cmp = require('cmp')
         local builtin = require('telescope.builtin')
         local null_ls = require('null-ls')
@@ -61,6 +62,10 @@ hvim.pack {
             "prismals",
             "html",
         }
+
+        lsp.configure('denols', {
+            root_dir = util.root_pattern('deno.json', 'deno.jsonc'),
+        })
 
         local cmp_kinds = {
             Text = "  ",
