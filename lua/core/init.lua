@@ -14,9 +14,11 @@ hvim.modules('editor', {
 })
 
 hvim.modules('tools', {
+    'debugger',
+    'docker',
     'editorconfig',
-    'gitsigns',
     'lsp',
+    'pastebin',
     'telescope',
     'tree-sitter',
 })
@@ -27,6 +29,7 @@ hvim.modules('ui', {
     'hydra',
     'nvimtree',
     'tabs',
+    'vc-gutter',
     'window-select',
 })
 

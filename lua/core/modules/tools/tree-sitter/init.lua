@@ -47,6 +47,7 @@ hvim.pack {
                 "javascript",
                 "help",
                 "json",
+                "jsonc",
                 "yaml",
                 "python",
                 "nix",
