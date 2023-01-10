@@ -27,6 +27,7 @@ hvim.modules('ui', {
     'hydra',
     'nvimtree',
     'tabs',
+    'window-select',
 })
 
 hvim.setup()
