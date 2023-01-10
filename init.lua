@@ -1,1 +1,1 @@
-require 'hayden'
+require 'core'
