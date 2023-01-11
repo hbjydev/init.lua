@@ -26,13 +26,39 @@ hvim.pack {
         'jay-babu/mason-null-ls.nvim',
     },
 
-    event = "BufEnter",
+    ft = {
+        "css",
+        "bash",
+        "dockerfile",
+        "html",
+        "javascript",
+        "javascriptreact",
+        "json",
+        "jsonc",
+        "lua",
+        "markdown",
+        "python",
+        "go",
+        "rust",
+        "sh",
+        "typescript",
+        "typescriptreact",
+        "vim",
+        "nix",
+        "vue",
+        "yaml",
+        "proto",
+        "prisma",
+        "cmake",
+        "text",
+        "php",
+        "terraform",
+    },
 
     config = function ()
         local lsp = require('lsp-zero')
         local util = require('lspconfig.util')
         local cmp = require('cmp')
-        local builtin = require('telescope.builtin')
         local null_ls = require('null-ls')
         local mason_null_ls = require('mason-null-ls')
 
@@ -151,6 +177,7 @@ hvim.pack {
         }
 
         lsp.on_attach(function (_, bufnr)
+            local builtin = require('telescope.builtin')
             local opts = { buffer = bufnr, remap = false }
 
             vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)

@@ -25,12 +25,5 @@ macros.pack {
                 { filetype = "DiffviewFiles", text = "Source Control", text_align = "center" },
             },
         }
-    },
-
-    config = function (_, config)
-        require('bufferline').setup(config)
-
-        vim.api.nvim_set_keymap('n', '<C-PageUp>', ':bn<CR>', { silent = true })
-        vim.api.nvim_set_keymap('n', '<C-PageDown>', ':bp<CR>', { silent = true })
-    end
+    }
 }
