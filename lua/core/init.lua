@@ -11,7 +11,7 @@ hvim.pack 'nvim-lua/plenary.nvim'
 
 hvim.modules('editor', {
     'comment',
-    -- 'fold', -- FIXME: Something wrong with mappings I think
+    'fold', -- FIXME: Something wrong with mappings I think
 })
 
 hvim.modules('tools', {

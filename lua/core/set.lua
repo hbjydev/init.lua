@@ -19,6 +19,12 @@ vim.opt.undofile = true
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
 
+-- code folding
+vim.opt.foldcolumn = '1'
+vim.opt.foldlevel = 99
+vim.opt.foldlevelstart = 99
+vim.opt.foldenable = true
+
 -- other settings
 vim.opt.wrap = false
 vim.opt.termguicolors = true
