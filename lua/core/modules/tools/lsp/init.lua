@@ -29,6 +29,7 @@ hvim.pack {
     ft = {
         "css",
         "bash",
+        "sh",
         "dockerfile",
         "html",
         "javascript",
@@ -53,6 +54,7 @@ hvim.pack {
         "text",
         "php",
         "terraform",
+        "tex",
     },
 
     config = function ()
@@ -87,6 +89,7 @@ hvim.pack {
             "cmake",
             "prismals",
             "html",
+            "ltex",
         }
 
         lsp.configure('denols', {
@@ -205,6 +208,7 @@ hvim.pack {
 
         mason_null_ls.setup {
             ensure_installed = {
+                'commitlint',
                 'flake8',
                 'gofumpt',
                 'golangci-lint',
