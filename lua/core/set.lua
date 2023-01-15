@@ -32,3 +32,7 @@ vim.opt.scrolloff = 8
 vim.opt.colorcolumn = "80"
 vim.g.netrw_banner = 0
 vim.opt.cursorline = true
+
+-- disable some providers
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_ruby_provider = 0

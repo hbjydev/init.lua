@@ -58,7 +58,9 @@ hvim.pack {
             buttons = {
                 type = "group",
                 val = {
-                    button("<leader>pv", "  Find files", ":Telescope find_files <CR>"),
+                    button("<leader>pv", "  File browser", ":Telescope find_files <CR>"),
+                    { type = "padding", val = 1 },
+                    button("<leader>pf", "  Find files", ":Telescope find_files <CR>"),
                 },
             },
 
