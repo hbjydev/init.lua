@@ -8,6 +8,8 @@ hvim.pack {
 
     build = ":TSUpdate",
 
+    event = "BufRead",
+
     config = function()
         require'nvim-treesitter.configs'.setup {
             textobjects = {

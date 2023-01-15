@@ -2,6 +2,7 @@ local hvim = require('core.macros')
 
 hvim.pack {
     'lewis6991/gitsigns.nvim',
+    event = "BufRead",
     opts = {
         signs = {
             add          = { hl = 'GitSignsAdd'   , text = '▍', numhl='GitSignsAddNr'   , linehl='DiffAdded'   },

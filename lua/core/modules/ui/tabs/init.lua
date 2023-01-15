@@ -2,6 +2,7 @@ local macros = require('core.macros')
 
 macros.pack {
     "akinsho/bufferline.nvim",
+    event = "BufAdd",
     opts = {
         options = {
             numbers = "none",

@@ -27,7 +27,7 @@ hvim.pack {
         'jay-babu/mason-null-ls.nvim',
     },
 
-    event = "BufEnter *", -- FIXME: Don't load unless opening a _file_.
+    event = "BufRead",
 
     config = function ()
         local lsp = require('lsp-zero')

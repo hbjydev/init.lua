@@ -7,7 +7,7 @@ require 'core.statusline'
 hvim.init()
 
 hvim.pack 'nyoom-engineering/oxocarbon.nvim'
-hvim.pack 'nvim-lua/plenary.nvim'
+hvim.pack {'nvim-lua/plenary.nvim', lazy = true}
 
 hvim.modules('editor', {
     'comment',
@@ -27,7 +27,6 @@ hvim.modules('tools', {
 hvim.modules('ui', {
     'dashboard',
     'hvim',
-    'hydra',
     'nvimtree',
     'tabs',
     'vc-gutter',
