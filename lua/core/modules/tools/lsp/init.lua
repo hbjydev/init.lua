@@ -18,6 +18,7 @@ hvim.pack {
 
         -- Snippets
         'L3MON4D3/LuaSnip',
+
         -- Snippet Collection (Optional)
         'rafamadriz/friendly-snippets',
 
@@ -26,36 +27,7 @@ hvim.pack {
         'jay-babu/mason-null-ls.nvim',
     },
 
-    ft = {
-        "css",
-        "bash",
-        "sh",
-        "dockerfile",
-        "html",
-        "javascript",
-        "javascriptreact",
-        "json",
-        "jsonc",
-        "lua",
-        "markdown",
-        "python",
-        "go",
-        "rust",
-        "sh",
-        "typescript",
-        "typescriptreact",
-        "vim",
-        "nix",
-        "vue",
-        "yaml",
-        "proto",
-        "prisma",
-        "cmake",
-        "text",
-        "php",
-        "terraform",
-        "tex",
-    },
+    event = "BufEnter *", -- FIXME: Don't load unless opening a _file_.
 
     config = function ()
         local lsp = require('lsp-zero')
@@ -95,6 +67,9 @@ hvim.pack {
         lsp.configure('denols', {
             root_dir = util.root_pattern('deno.json', 'deno.jsonc'),
         })
+
+        lsp.configure('fennel-ls', {})
+        lsp.setup_servers({'fennel-ls', force = true})
 
         local cmp_kinds = {
             Text = "  ",
