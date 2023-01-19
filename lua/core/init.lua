@@ -28,6 +28,7 @@ hvim.modules('tools', {
     'docker',
     'editorconfig',
     'lsp',
+    'mason',
     'pastebin',
     'telescope',
     'tree-sitter',
@@ -36,6 +37,7 @@ hvim.modules('tools', {
 hvim.modules('ui', {
     'dashboard',
     'hvim',
+    'noice',
     'nvimtree',
     'tabs',
     'vc-gutter',
