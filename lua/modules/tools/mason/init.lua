@@ -5,6 +5,7 @@ hvim.pack {
 
     dependencies = {
         'williamboman/mason-lspconfig.nvim',
+        'folke/neodev.nvim',
     },
 
     config = function ()
@@ -78,7 +79,19 @@ hvim.pack {
 
         mlc.setup_handlers {
             function (server_name)
-                require('lspconfig')[server_name].setup(defaults)
+                lsp[server_name].setup(defaults)
+            end,
+
+            sumneko_lua = function()
+                local neodev = require('neodev')
+
+                neodev.setup {
+                    lspconfig = false,
+                }
+
+                lsp['sumneko_lua'].setup {
+                    before_init = require("neodev.lsp").before_init
+                }
             end,
         }
     end,

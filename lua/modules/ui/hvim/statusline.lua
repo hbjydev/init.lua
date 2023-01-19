@@ -137,8 +137,8 @@ local function getGitStatus()
      added,
      changed,
      removed,
-     " ",
-     "%#GitSignsAdd# ",
+     "%#Normal# ",
+     "%#GitSignsAdd# ",
      git_info.head,
      " %#NormalNC#",
   }

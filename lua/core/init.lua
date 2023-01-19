@@ -8,10 +8,6 @@ hvim.init()
 hvim.pack 'nyoom-engineering/oxocarbon.nvim'
 hvim.pack {'nvim-lua/plenary.nvim', lazy = true}
 
-hvim.modules('completion', {
-    'cmp',
-})
-
 hvim.modules('editor', {
     'comment',
     'fold', -- FIXME: Something wrong with mappings I think
@@ -42,6 +38,10 @@ hvim.modules('ui', {
     'tabs',
     'vc-gutter',
     'window-select',
+})
+
+hvim.modules('completion', {
+    'cmp',
 })
 
 hvim.setup()
