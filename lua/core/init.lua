@@ -9,6 +9,10 @@ hvim.init()
 hvim.pack 'nyoom-engineering/oxocarbon.nvim'
 hvim.pack {'nvim-lua/plenary.nvim', lazy = true}
 
+hvim.modules('completion', {
+    'cmp',
+})
+
 hvim.modules('editor', {
     'comment',
     'fold', -- FIXME: Something wrong with mappings I think

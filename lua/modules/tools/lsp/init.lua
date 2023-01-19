@@ -5,12 +5,29 @@ hvim.pack {
     'neovim/nvim-lspconfig',
 
     event = "BufRead",
+    cmd = {
+        "LspInfo",
+        "LspLog",
+        "LspRestart",
+        "LspStart",
+        "LspStop",
+    },
 
     config = function ()
         local lsp = require('lspconfig')
         local builtin = require('telescope.builtin')
 
         local lsp_servers = {}
+
+        vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
+            vim.lsp.handlers.signature_help,
+            { border = 'solid' }
+        )
+
+        vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
+            vim.lsp.handlers.hover,
+            { border = 'solid' }
+        )
 
         local on_attach = function (_, bufnr)
             vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
