@@ -25,6 +25,7 @@ hvim.modules('tools', {
     'editorconfig',
     'lsp',
     'mason',
+    'null-ls',
     'pastebin',
     'telescope',
     'tree-sitter',
