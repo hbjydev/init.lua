@@ -140,7 +140,7 @@ local function getGitStatus()
      " ",
      "%#GitSignsAdd# ",
      git_info.head,
-     " %#Normal#",
+     " %#NormalNC#",
   }
 end
 
@@ -191,19 +191,11 @@ function Statusline.active()
 end
 
 function Statusline.inactive()
-    return table.concat {
-        "%#StatuslineNC#",
-        "%#Normal# ",
-        getFileinfo(true),
-
-        "%=%#StatusLineExtra#",
-        getFiletype(),
-        getLineNo(),
-    }
+    return ""
 end
 
 function Statusline.short()
-    return "%#StatusLineNC#   NvimTree"
+    return "%#StatuslineNC#   NvimTree"
 end
 
 vim.api.nvim_exec([[
