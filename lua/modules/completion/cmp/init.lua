@@ -9,11 +9,10 @@ end
 hvim.pack {
     "hrsh7th/nvim-cmp",
 
-    -- event = { "InsertEnter" },
-    -- cmd = "CmpStatus",
+    event = { "InsertEnter" },
+    cmd = "CmpStatus",
 
     dependencies = {
-        {'onsails/lspkind.nvim', lazy = true},
         {'hrsh7th/cmp-path', lazy = true},
         {'hrsh7th/cmp-buffer', lazy = true},
         {'hrsh7th/cmp-cmdline', lazy = true},

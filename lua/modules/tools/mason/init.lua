@@ -3,6 +3,8 @@ local hvim = require('core.macros')
 hvim.pack {
     'williamboman/mason.nvim',
 
+    event = "BufRead *",
+
     dependencies = {
         'williamboman/mason-lspconfig.nvim',
         'folke/neodev.nvim',

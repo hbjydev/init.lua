@@ -3,7 +3,10 @@ local hvim = require('core.macros')
 hvim.pack {
     'jose-elias-alvarez/null-ls.nvim',
 
+    event = "BufRead *",
+
     dependencies = {
+        'williamboman/mason.nvim',
         'jay-babu/mason-null-ls.nvim',
     },
 

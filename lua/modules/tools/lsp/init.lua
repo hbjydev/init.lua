@@ -3,7 +3,7 @@ local hvim = require('core.macros')
 hvim.pack {
     'neovim/nvim-lspconfig',
 
-    event = "BufRead",
+    event = "BufRead *",
     cmd = {
         "LspInfo",
         "LspLog",
@@ -14,6 +14,8 @@ hvim.pack {
 
     dependencies = {
         'j-hui/fidget.nvim',
+        'williamboman/mason.nvim',
+        'jose-elias-alvarez/null-ls.nvim',
     },
 
     config = function ()
