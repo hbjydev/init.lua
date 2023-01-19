@@ -14,6 +14,12 @@ hvim.modules('editor', {
     'fold', -- FIXME: Something wrong with mappings I think
 })
 
+hvim.modules('lang', {
+    'golang',
+    'lua',
+    'typescript',
+})
+
 hvim.modules('tools', {
     'debugger',
     'docker',
