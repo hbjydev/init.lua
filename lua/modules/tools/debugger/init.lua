@@ -1,5 +1,12 @@
 local hvim = require('core.macros')
 
+local continue = function()
+    if vim.fn.filereadable('.vscode/launch.json') then
+        require('dap.ext.vscode').load_launchjs()
+    end
+    require('dap').continue()
+end
+
 hvim.pack {
     "rcarriga/nvim-dap",
 
@@ -13,13 +20,23 @@ hvim.pack {
     config = function ()
         local mnd = require('mason-nvim-dap')
         local dap = require('dap')
+        local dapui = require('dapui')
 
-        vim.keymap.set('n', '<F5>', ':lua require("dapui").toggle()')
-        vim.keymap.set('n', '<leader>dc', dap.continue)
+        vim.keymap.set('n', '<leader>dc', continue)
+        vim.keymap.set('n', '<F5>', continue)
+
         vim.keymap.set('n', '<leader>dsv', dap.step_over)
         vim.keymap.set('n', '<leader>dsi', dap.step_into)
         vim.keymap.set('n', '<leader>dso', dap.step_out)
+
         vim.keymap.set('n', '<leader>dtb', dap.toggle_breakpoint)
+        vim.keymap.set('n', '<F4>', dap.toggle_breakpoint)
+
+        vim.keymap.set('n', '<leader>du', dapui.toggle)
+
+        dap.listeners.after.event_initialized["dapui_config"] = function()
+            dapui.open {}
+        end
 
         mnd.setup {
             ensure_installed = {
@@ -34,9 +51,9 @@ hvim.pack {
             automatic_setup = true,
         }
 
-        require 'mason-nvim-dap'.setup_handlers()
+        mnd.setup_handlers()
 
-        require('dapui').setup {
+        dapui.setup {
             icons = {
                 expanded = "",
                 collapsed = "",
