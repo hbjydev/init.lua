@@ -2,7 +2,6 @@ local hvim = require 'core.macros'
 
 require 'core.remap'
 require 'core.set'
-require 'core.statusline'
 
 hvim.init()
 
@@ -44,5 +43,3 @@ hvim.modules('ui', {
 })
 
 hvim.setup()
-
-vim.cmd.colorscheme('oxocarbon')

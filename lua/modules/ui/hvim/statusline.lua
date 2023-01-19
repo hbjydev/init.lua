@@ -1,3 +1,7 @@
+local oxocarbon = require('oxocarbon')
+
+vim.api.nvim_set_hl(0, 'StatusLineNC', { ctermbg = oxocarbon.base00 })
+
 local modes = {
     ["n"]  = "RW",
     ["no"] = "RO",
@@ -67,7 +71,9 @@ local function getFiletype()
     return "%#NormalNC#" .. vim.bo.filetype
 end
 
-local function getFileinfo()
+local function getFileinfo(is_inactive)
+    is_inactive = is_inactive or false
+
     filename = vim.fn.expand("%")
     if filename == "" then
         filename = " kekw-nvim "
@@ -75,7 +81,9 @@ local function getFileinfo()
         filename = " " .. vim.fn.expand("%:t") .. " "
     end
 
-    return "%#Normal#" .. filename .. "%#NormalNC#"
+    local color = (is_inactive and "%#@comment#") or "%#Normal#"
+
+    return color .. filename .. "%#NormalNC#"
 end
 
 local function getMode()
@@ -164,37 +172,45 @@ end
 
 Statusline = {}
 
-Statusline.active = function()
-  return table.concat {
-    "%#Statusline#",
-    updateModeColors(),
-    getMode(),
+function Statusline.active()
+    return table.concat {
+        "%#Statusline#",
+        updateModeColors(),
+        getMode(),
 
-    "%#Normal# ",
-    getFileinfo(),
-    getLspDiagnostic(),
+        "%#Normal# ",
+        getFileinfo(),
+        getLspDiagnostic(),
 
-    "%=%#StatusLineExtra#",
-    getGitStatus(),
-    getFiletype(),
-    getWordCount(),
-    getLineNo(),
-  }
+        "%=%#StatusLineExtra#",
+        getGitStatus(),
+        getFiletype(),
+        getWordCount(),
+        getLineNo(),
+    }
 end
 
 function Statusline.inactive()
-  return "%#StatusLine% %F"
+    return table.concat {
+        "%#StatuslineNC#",
+        "%#Normal# ",
+        getFileinfo(true),
+
+        "%=%#StatusLineExtra#",
+        getFiletype(),
+        getLineNo(),
+    }
 end
 
 function Statusline.short()
-  return "%#StatusLineNC#   NvimTree"
+    return "%#StatusLineNC#   NvimTree"
 end
 
 vim.api.nvim_exec([[
-  augroup Statusline
-  au!
-  au WinEnter,BufEnter * setlocal statusline=%!v:lua.Statusline.active()
-  au WinLeave,BufLeave * setlocal statusline=%!v:lua.Statusline.inactive()
-  au WinEnter,BufEnter,FileType NvimTree setlocal statusline=%!v:lua.Statusline.short()
-  augroup END
+augroup Statusline
+au!
+au WinEnter,BufEnter * setlocal statusline=%!v:lua.Statusline.active()
+au WinLeave,BufLeave * setlocal statusline=%!v:lua.Statusline.inactive()
+au WinEnter,BufEnter,FileType NvimTree setlocal statusline=%!v:lua.Statusline.short()
+augroup END
 ]], false)
