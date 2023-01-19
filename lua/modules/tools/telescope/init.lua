@@ -47,6 +47,13 @@ hvim.pack {
                 set_env = {
                     COLORTERM = "truecolor",
                 },
+
+                file_ignore_patterns = {
+                    "node_modules",
+                    ".direnv",
+                    "venv",
+                    "vendor",
+                },
             },
 
             extensions = {
