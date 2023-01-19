@@ -1,5 +1,6 @@
 local lsp = require('lsp-zero')
 local cmp = require('cmp')
+local ls = require('luasnip')
 
 local cmp_kinds = {
     Text = "  ",
@@ -44,6 +45,28 @@ cmp_mappings['<S-Tab>'] = nil
 
 -- disable confirm with Enter key
 cmp_mappings['<CR>'] = nil
+
+vim.keymap.set(
+    {'i', 's'},
+    '<Tab>',
+    function ()
+        if ls.expand_or_jumpable() then
+            ls.expand_or_jump()
+        end
+    end,
+    { silent = true }
+)
+
+vim.keymap.set(
+    {'i', 's'},
+    '<S-Tab>',
+    function ()
+        if ls.jumpable(-1) then
+            ls.jump(-1)
+        end
+    end,
+    { silent = true }
+)
 
 lsp.setup_nvim_cmp {
     mapping = cmp_mappings,
