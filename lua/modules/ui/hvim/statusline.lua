@@ -1,6 +1,7 @@
 local oxocarbon = require('oxocarbon')
 
 vim.api.nvim_set_hl(0, 'StatusLineNC', { ctermbg = oxocarbon.base00 })
+vim.opt.laststatus = 3
 
 local modes = {
     ["n"]  = "RW",
