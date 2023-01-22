@@ -4,6 +4,7 @@ hvim.pack {
     'williamboman/mason.nvim',
 
     event = "BufRead *",
+    cmd = "Mason",
 
     dependencies = {
         'williamboman/mason-lspconfig.nvim',
@@ -34,7 +35,7 @@ hvim.pack {
                 'cmake',
                 'cssls',
                 'cssmodules_ls',
-                'denols',
+                -- 'denols', -- FIXME: need to configure it not to run when tsserver is.
                 'dockerls',
                 'gopls',
                 'html',
