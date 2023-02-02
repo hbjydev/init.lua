@@ -9,4 +9,8 @@ hvim.pack {
     end,
 }
 
-hvim.pack "bfontaine/Brewfile.vim"
+hvim.pack {
+    "bfontaine/Brewfile.vim",
+
+    ft = { "brewfile" },
+}
