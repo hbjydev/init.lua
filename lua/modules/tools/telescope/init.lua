@@ -24,6 +24,17 @@ hvim.pack {
 
     config = function ()
         require('telescope').setup {
+            pickers = {
+                buffers = {
+                    show_all_buffers = true,
+                    sort_lastused = true,
+                    previewer = false,
+                    mappings = {
+                        i = { ["<c-d>"] = "delete_buffer" },
+                    },
+                },
+            },
+
             defaults = {
                 prompt_prefix = "   ",
                 selection_caret = "  ",
