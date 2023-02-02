@@ -12,6 +12,13 @@ hvim.pack {
         load = {
             ["core.defaults"] = {},
             ["core.norg.concealer"] = {},
+
+            ["core.norg.completion"] = {
+                config = {
+                    engine = "nvim-cmp",
+                },
+            },
+
             ["core.norg.dirman"] = {
                 config = {
                     workspaces = {
@@ -23,5 +30,8 @@ hvim.pack {
         },
     },
 
-    dependencies = { "nvim-lua/plenary.nvim" },
+    dependencies = {
+        "nvim-lua/plenary.nvim",
+        "nvim-treesitter/nvim-treesitter",
+    },
 }
