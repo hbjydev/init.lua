@@ -5,6 +5,8 @@ hvim.pack {
 
     config = function()
         vim.cmd.colorscheme('oxocarbon')
-        require('modules.ui.hvim.statusline')        
+        require('modules.ui.hvim.statusline')
     end,
 }
+
+hvim.pack "bfontaine/Brewfile.vim"
