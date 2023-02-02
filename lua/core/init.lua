@@ -35,8 +35,8 @@ hvim.modules('tools', {
 hvim.modules('ui', {
     'dashboard',
     'hvim',
+    'neotree',
     'noice',
-    'nvimtree',
     'tabs',
     'vc-gutter',
     'window-select',
