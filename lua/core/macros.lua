@@ -5,6 +5,9 @@ local M = {
         hint = "",
         info = "",
     },
+
+    module = {},
+    packs = {},
 }
 
 function M.ensurelazy()
@@ -23,19 +26,19 @@ function M.ensurelazy()
 end
 
 function M.init()
-    _G["hvim/modules"] = {}
-    _G["hvim/pack"] = {}
+    M.module = {}
+    M.packs = {}
     M.ensurelazy()
 end
 
 function M.setup()
-    for _, entry in pairs(_G["hvim/modules"]) do
+    for _, entry in pairs(M.module) do
         for _, path in pairs(entry.import_paths) do
             require(path)
         end
     end
 
-    require("lazy").setup(_G["hvim/pack"])
+    require("lazy").setup(M.packs)
 end
 
 function M.modules(cat, names)
@@ -56,13 +59,13 @@ function M.modules(cat, names)
             },
         }
 
-        _G["hvim/modules"][name] = entry
+        M.module[name] = entry
     end
 end
 
 function M.ifmodule(name, cb)
     assert(type(name) == "string", "name must be a string")
-    local mod = _G["hvim/modules"][name]
+    local mod = M.module[name]
 
     if not (mod == nil) then
         return cb()
@@ -70,7 +73,7 @@ function M.ifmodule(name, cb)
 end
 
 function M.pack(spec)
-    table.insert(_G["hvim/pack"], spec)
+    table.insert(M.packs, spec)
 end
 
 return M

@@ -15,7 +15,7 @@ hvim.pack({
             "<leader>ps",
             function()
                 require("telescope.builtin").grep_string({
-                    search = vim.fn.input("Grep > "),
+                    search = vim.fn.input({prompt = "Grep > "}),
                 })
             end,
             desc = "Text search",

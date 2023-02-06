@@ -47,7 +47,7 @@ hvim.pack({
 
     priority = 100,
 
-    config = function(_, opts)
+    config = function(_, _)
         local sections = {
             header = {
                 type = "text",

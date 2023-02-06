@@ -34,7 +34,7 @@ local modes = {
     ["t"] = "",
 }
 
-function getLspDiagnostic()
+local function getLspDiagnostic()
     local count = {}
     local levels = {
         errors = "Error",
@@ -75,7 +75,7 @@ end
 local function getFileinfo(is_inactive)
     is_inactive = is_inactive or false
 
-    filename = vim.fn.expand("%")
+    local filename = vim.fn.expand("%")
     if filename == "" then
         filename = " kekw-nvim "
     else
@@ -118,6 +118,7 @@ local function updateModeColors()
 end
 
 local function getGitStatus()
+    ---@diagnostic disable-next-line: undefined-field
     local git_info = vim.b.gitsigns_status_dict
     if not git_info or git_info.head == "" then
         return ""
@@ -171,6 +172,7 @@ local function getWordCount()
     end
 end
 
+---@diagnostic disable-next-line: unscoped_variables
 Statusline = {}
 
 function Statusline.active()
