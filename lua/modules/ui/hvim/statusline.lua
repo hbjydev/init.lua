@@ -172,7 +172,6 @@ local function getWordCount()
     end
 end
 
----@diagnostic disable-next-line: unscoped_variables
 Statusline = {}
 
 function Statusline.active()
