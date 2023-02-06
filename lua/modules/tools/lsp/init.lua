@@ -20,9 +20,11 @@ hvim.pack {
 
     config = function ()
         local opts = { noremap = true, silent = true }
-        vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, opts)
-        vim.keymap.set('n', '<leader>[d', vim.diagnostic.goto_prev, opts)
-        vim.keymap.set('n', '<leader>]d', vim.diagnostic.goto_next, opts)
+
+        vim.keymap.set('n', '<leader>do', vim.diagnostic.open_float, opts)
+        vim.keymap.set('n', '<leader>dl', ":Telescope diagnostics bufnr=0<CR>", opts)
+        vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
+        vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 
         require('fidget').setup {}
     end,

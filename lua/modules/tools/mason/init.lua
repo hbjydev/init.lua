@@ -14,10 +14,10 @@ hvim.pack {
     config = function ()
         local mlc = require('mason-lspconfig')
         local lsp = require('lspconfig')
-        local builtin = require('telescope.builtin')
 
         require('mason').setup {
             ui = {
+                border = "solid",
                 icons = {
                     package_installed = "",
                     package_pending = "",
@@ -61,18 +61,17 @@ hvim.pack {
             vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
             local bufopts = { noremap = true, silent = true, buffer = bufnr }
-            vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, bufopts)
-            vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, bufopts)
-            vim.keymap.set("n", "<leader>ws", function() vim.lsp.buf.workspace_symbol() end, bufopts)
-            vim.keymap.set("n", "<leader>d", function() vim.diagnostic.open_float() end, bufopts)
-            vim.keymap.set("n", "]d", function() vim.diagnostic.goto_next() end, bufopts)
-            vim.keymap.set("n", "[d", function() vim.diagnostic.goto_prev() end, bufopts)
-            vim.keymap.set("n", "<leader>ca", function() vim.lsp.buf.code_action() end, bufopts)
-            vim.keymap.set("n", "<leader>rr", function() vim.lsp.buf.references() end, bufopts)
-            vim.keymap.set("n", "<leader>rn", function() vim.lsp.buf.rename() end, bufopts)
-            vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, bufopts)
-            vim.keymap.set("n", "<leader>F", function() vim.lsp.buf.format() end, bufopts)
-            vim.keymap.set("n", "<leader>ds", builtin.lsp_document_symbols, bufopts)
+
+            vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
+            vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
+            vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, bufopts)
+            vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, bufopts)
+            vim.keymap.set("n", "<leader>F", vim.lsp.buf.format, bufopts)
+
+            vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, bufopts)
+
+            vim.keymap.set("n", "<leader>ds", ":Telescope lsp_document_symbols<CR>", bufopts)
+            vim.keymap.set("n", "<leader>rr", ":Telescope lsp_references<CR>", bufopts)
         end
 
         local defaults = {
@@ -93,7 +92,9 @@ hvim.pack {
                 }
 
                 lsp['sumneko_lua'].setup {
-                    before_init = require("neodev.lsp").before_init
+                    before_init = require("neodev.lsp").before_init,
+                    on_attach = on_attach,
+                    flags = { debounce_text_changes = 150 },
                 }
             end,
         }

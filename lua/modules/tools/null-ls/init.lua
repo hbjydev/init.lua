@@ -15,17 +15,39 @@ hvim.pack {
 
         mason_null_ls.setup {
             ensure_installed = {
+                -- git
                 'commitlint',
-                'flake8',
+
+                -- python
+                'black',
+                'isort',
+                'debugpy',
+
+                -- go
                 'gofumpt',
                 'golangci-lint',
                 'golines',
                 'gomodifytags',
                 'gotests',
+
+                -- php
                 'phpcs',
                 'phpstan',
+
+                -- shell
                 'shellcheck',
+
+                -- lua
+                'stylua',
+                'selene',
+
+                -- terraform
                 'tflint',
+
+                -- ts/js
+                'prettier',
+
+                -- yaml
                 'yamllint',
             },
             automatic_setup = true,
