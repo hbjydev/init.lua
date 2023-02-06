@@ -10,7 +10,7 @@ hvim.pack {
         { "<leader>ptl", "<cmd>TodoQuickFix<cr>", desc = "TODO Quick Fix" },
     },
 
-    event = "BufEnter *",
+    event = "BufRead",
 
     dependencies = { 'nvim-lua/plenary.nvim' },
 
