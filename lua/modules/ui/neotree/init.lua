@@ -1,9 +1,9 @@
-local hvim = require('core.macros')
+local hvim = require("core.macros")
 
 -- vim.g.neo_tree_remove_legacy_commands = 1
 
-hvim.pack {
-    'nvim-neo-tree/neo-tree.nvim',
+hvim.pack({
+    "nvim-neo-tree/neo-tree.nvim",
 
     cmd = "Neotree",
 
@@ -18,8 +18,8 @@ hvim.pack {
     },
 
     dependencies = {
-        'nvim-lua/plenary.nvim',
-        'nvim-tree/nvim-web-devicons',
-        'MunifTanjim/nui.nvim',
+        "nvim-lua/plenary.nvim",
+        "nvim-tree/nvim-web-devicons",
+        "MunifTanjim/nui.nvim",
     },
-}
+})

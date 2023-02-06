@@ -1,29 +1,29 @@
-local hvim = require 'core.macros'
-hvim.pack {
-    'nvim-telescope/telescope.nvim',
+local hvim = require("core.macros")
+hvim.pack({
+    "nvim-telescope/telescope.nvim",
     dependencies = {
-        'nvim-telescope/telescope-ui-select.nvim'
+        "nvim-telescope/telescope-ui-select.nvim",
     },
 
     cmd = "Telescope",
 
     keys = {
         { "<leader><space>", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
-        { "<leader>pf",      "<cmd>Telescope find_files<cr>", desc = "Files" },
-        { "<C-p>",           "<cmd>Telescope git_files<cr>", desc = "Git Files" },
+        { "<leader>pf", "<cmd>Telescope find_files<cr>", desc = "Files" },
+        { "<C-p>", "<cmd>Telescope git_files<cr>", desc = "Git Files" },
         {
             "<leader>ps",
-            function ()
-                require('telescope.builtin').grep_string({
-                    search = vim.fn.input("Grep > ")
+            function()
+                require("telescope.builtin").grep_string({
+                    search = vim.fn.input("Grep > "),
                 })
             end,
-            desc = "Text search"
-        }
+            desc = "Text search",
+        },
     },
 
-    config = function ()
-        require('telescope').setup {
+    config = function()
+        require("telescope").setup({
             pickers = {
                 buffers = {
                     show_all_buffers = true,
@@ -69,11 +69,11 @@ hvim.pack {
 
             extensions = {
                 ["ui-select"] = {
-                    require('telescope.themes').get_dropdown {},
+                    require("telescope.themes").get_dropdown({}),
                 },
             },
-        }
+        })
 
-        require('telescope').load_extension('ui-select')
+        require("telescope").load_extension("ui-select")
     end,
-}
+})

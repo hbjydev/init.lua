@@ -1,60 +1,60 @@
-local hvim = require('core.macros')
+local hvim = require("core.macros")
 
-hvim.pack {
-    'jose-elias-alvarez/null-ls.nvim',
+hvim.pack({
+    "jose-elias-alvarez/null-ls.nvim",
 
     event = "BufRead *",
 
     dependencies = {
-        'williamboman/mason.nvim',
-        'jay-babu/mason-null-ls.nvim',
+        "williamboman/mason.nvim",
+        "jay-babu/mason-null-ls.nvim",
     },
 
-    config = function ()
-        local mason_null_ls = require('mason-null-ls')
+    config = function()
+        local mason_null_ls = require("mason-null-ls")
 
-        mason_null_ls.setup {
+        mason_null_ls.setup({
             ensure_installed = {
                 -- git
-                'commitlint',
+                "commitlint",
 
                 -- python
-                'black',
-                'isort',
-                'debugpy',
+                "black",
+                "isort",
+                "debugpy",
 
                 -- go
-                'gofumpt',
-                'golangci-lint',
-                'golines',
-                'gomodifytags',
-                'gotests',
+                "gofumpt",
+                "golangci-lint",
+                "golines",
+                "gomodifytags",
+                "gotests",
 
                 -- php
-                'phpcs',
-                'phpstan',
+                "phpcs",
+                "phpstan",
 
                 -- shell
-                'shellcheck',
+                "shellcheck",
 
                 -- lua
-                'stylua',
-                'selene',
+                "stylua",
+                "selene",
 
                 -- terraform
-                'tflint',
+                "tflint",
 
                 -- ts/js
-                'prettier',
+                "prettier",
 
                 -- yaml
-                'yamllint',
+                "yamllint",
             },
             automatic_setup = true,
-        }
+        })
 
-        mason_null_ls.setup_handlers {}
+        mason_null_ls.setup_handlers({})
 
-        require('null-ls').setup()
+        require("null-ls").setup()
     end,
-}
+})

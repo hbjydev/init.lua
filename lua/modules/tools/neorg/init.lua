@@ -1,6 +1,6 @@
-local hvim = require('core.macros')
+local hvim = require("core.macros")
 
-hvim.pack {
+hvim.pack({
     "nvim-neorg/neorg",
 
     build = ":Neorg sync-parsers",
@@ -34,4 +34,4 @@ hvim.pack {
         "nvim-lua/plenary.nvim",
         "nvim-treesitter/nvim-treesitter",
     },
-}
+})

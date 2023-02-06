@@ -1,7 +1,7 @@
-local hvim = require('core.macros')
+local hvim = require("core.macros")
 
-hvim.pack {
-    'kyazdani42/nvim-tree.lua',
+hvim.pack({
+    "kyazdani42/nvim-tree.lua",
     cmd = "NvimTreeToggle",
 
     keys = {
@@ -25,4 +25,4 @@ hvim.pack {
         actions = { open_file = { resize_window = true } },
         renderer = { indent_markers = { enable = false } },
     },
-}
+})

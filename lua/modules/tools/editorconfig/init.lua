@@ -1,6 +1,6 @@
-local hvim = require('core.macros')
+local hvim = require("core.macros")
 
-hvim.pack {
-    'gpanders/editorconfig.nvim',
+hvim.pack({
+    "gpanders/editorconfig.nvim",
     event = "BufRead",
-}
+})

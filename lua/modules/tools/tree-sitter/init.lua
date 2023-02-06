@@ -1,7 +1,7 @@
-local hvim = require 'core.macros'
+local hvim = require("core.macros")
 
-hvim.pack {
-    'nvim-treesitter/nvim-treesitter',
+hvim.pack({
+    "nvim-treesitter/nvim-treesitter",
     dependencies = {
         "nvim-treesitter/nvim-treesitter-textobjects",
     },
@@ -11,7 +11,7 @@ hvim.pack {
     event = "BufRead",
 
     config = function()
-        require'nvim-treesitter.configs'.setup {
+        require("nvim-treesitter.configs").setup({
             textobjects = {
                 select = {
                     enable = true,
@@ -25,9 +25,9 @@ hvim.pack {
                     },
 
                     selection_modes = {
-                        ['@parameter.outer'] = 'v', -- charwise
-                        ['@function.outer'] = 'V', -- linewise
-                        ['@class.outer'] = '<c-v>', -- blockwise
+                        ["@parameter.outer"] = "v", -- charwise
+                        ["@function.outer"] = "V", -- linewise
+                        ["@class.outer"] = "<c-v>", -- blockwise
                     },
                 },
             },
@@ -77,6 +77,6 @@ hvim.pack {
                 "tsx",
                 "fennel",
             },
-        }
-    end
-}
+        })
+    end,
+})

@@ -1,6 +1,6 @@
-local hvim = require('core.macros')
+local hvim = require("core.macros")
 
-hvim.pack {
+hvim.pack({
     "esensar/nvim-dev-container",
     cmd = {
         "DevcontainerBuild",
@@ -21,4 +21,4 @@ hvim.pack {
         "DevcontainerEditNearestConfig",
     },
     opts = {},
-}
+})

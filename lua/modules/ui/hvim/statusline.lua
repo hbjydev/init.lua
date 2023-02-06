@@ -1,31 +1,31 @@
-local oxocarbon = require('oxocarbon')
+local oxocarbon = require("oxocarbon")
 
-vim.api.nvim_set_hl(0, 'StatusLineNC', { ctermbg = oxocarbon.base00 })
+vim.api.nvim_set_hl(0, "StatusLineNC", { ctermbg = oxocarbon.base00 })
 vim.opt.laststatus = 3
 
 local modes = {
-    ["n"]  = "RW",
+    ["n"] = "RW",
     ["no"] = "RO",
 
-    ["v"]    = "**",
-    ["V"]    = "**",
+    ["v"] = "**",
+    ["V"] = "**",
     ["\022"] = "**",
 
-    ["s"]    = "S",
-    ["S"]    = "SL",
+    ["s"] = "S",
+    ["S"] = "SL",
     ["\019"] = "SB",
 
-    ["i"]  = "**",
+    ["i"] = "**",
     ["ic"] = "**",
 
-    ["R"]  = "RA",
+    ["R"] = "RA",
     ["Rv"] = "Rv",
 
-    ["c"]  = "VIEX",
+    ["c"] = "VIEX",
     ["cv"] = "VIEX",
     ["ce"] = "EX",
 
-    ["r"]  = "r",
+    ["r"] = "r",
     ["rm"] = "r",
     ["r?"] = "r",
 
@@ -97,52 +97,52 @@ local function getLineNo()
 end
 
 local function updateModeColors()
-  local current_mode = vim.api.nvim_get_mode().mode
-  local mode_color = "%#Normal#"
+    local current_mode = vim.api.nvim_get_mode().mode
+    local mode_color = "%#Normal#"
 
-  if current_mode == "n" then
-      mode_color = "%#StatusNormal#"
-  elseif current_mode == "i" or current_mode == "ic" then
-      mode_color = "%#StatusInsert#"
-  elseif current_mode == "v" or current_mode == "V" or current_mode == "" then
-      mode_color = "%#StatusVisual#"
-  elseif current_mode == "R" then
-      mode_color = "%#StatusReplace#"
-  elseif current_mode == "c" then
-      mode_color = "%#StatusCommand#"
-  elseif current_mode == "t" then
-      mode_color = "%#StatusTerminal#"
-  end
+    if current_mode == "n" then
+        mode_color = "%#StatusNormal#"
+    elseif current_mode == "i" or current_mode == "ic" then
+        mode_color = "%#StatusInsert#"
+    elseif current_mode == "v" or current_mode == "V" or current_mode == "" then
+        mode_color = "%#StatusVisual#"
+    elseif current_mode == "R" then
+        mode_color = "%#StatusReplace#"
+    elseif current_mode == "c" then
+        mode_color = "%#StatusCommand#"
+    elseif current_mode == "t" then
+        mode_color = "%#StatusTerminal#"
+    end
 
-  return mode_color
+    return mode_color
 end
 
 local function getGitStatus()
-  local git_info = vim.b.gitsigns_status_dict
-  if not git_info or git_info.head == "" then
-    return ""
-  end
-  local added = git_info.added and ("%#GitSignsAdd#+" .. git_info.added .. " ") or ""
-  local changed = git_info.changed and ("%#GitSignsChange#~" .. git_info.changed .. " ") or ""
-  local removed = git_info.removed and ("%#GitSignsDelete#-" .. git_info.removed .. " ") or ""
-  if git_info.added == 0 then
-    added = ""
-  end
-  if git_info.changed == 0 then
-    changed = ""
-  end
-  if git_info.removed == 0 then
-    removed = ""
-  end
-  return table.concat {
-     added,
-     changed,
-     removed,
-     "%#Normal# ",
-     "%#GitSignsAdd# ",
-     git_info.head,
-     " %#NormalNC#",
-  }
+    local git_info = vim.b.gitsigns_status_dict
+    if not git_info or git_info.head == "" then
+        return ""
+    end
+    local added = git_info.added and ("%#GitSignsAdd#+" .. git_info.added .. " ") or ""
+    local changed = git_info.changed and ("%#GitSignsChange#~" .. git_info.changed .. " ") or ""
+    local removed = git_info.removed and ("%#GitSignsDelete#-" .. git_info.removed .. " ") or ""
+    if git_info.added == 0 then
+        added = ""
+    end
+    if git_info.changed == 0 then
+        changed = ""
+    end
+    if git_info.removed == 0 then
+        removed = ""
+    end
+    return table.concat({
+        added,
+        changed,
+        removed,
+        "%#Normal# ",
+        "%#GitSignsAdd# ",
+        git_info.head,
+        " %#NormalNC#",
+    })
 end
 
 local function getWordCount()
@@ -174,7 +174,7 @@ end
 Statusline = {}
 
 function Statusline.active()
-    return table.concat {
+    return table.concat({
         "%#Statusline#",
         updateModeColors(),
         getMode(),
@@ -188,7 +188,7 @@ function Statusline.active()
         getFiletype(),
         getWordCount(),
         getLineNo(),
-    }
+    })
 end
 
 function Statusline.inactive()
@@ -199,11 +199,14 @@ function Statusline.short()
     return "%#StatuslineNC#   NvimTree"
 end
 
-vim.api.nvim_exec([[
+vim.api.nvim_exec(
+    [[
 augroup Statusline
 au!
 au WinEnter,BufEnter * setlocal statusline=%!v:lua.Statusline.active()
 au WinLeave,BufLeave * setlocal statusline=%!v:lua.Statusline.inactive()
 au WinEnter,BufEnter,FileType NvimTree setlocal statusline=%!v:lua.Statusline.short()
 augroup END
-]], false)
+]],
+    false
+)

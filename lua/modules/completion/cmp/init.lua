@@ -1,35 +1,35 @@
-local hvim = require('core.macros')
+local hvim = require("core.macros")
 
 local has_words_before = function()
-  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+    local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+    return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
-hvim.pack {
+hvim.pack({
     "hrsh7th/nvim-cmp",
 
     event = { "InsertEnter" },
     cmd = "CmpStatus",
 
     dependencies = {
-        {'hrsh7th/cmp-path', lazy = true},
-        {'hrsh7th/cmp-buffer', lazy = true},
-        {'hrsh7th/cmp-cmdline', lazy = true},
-        {'hrsh7th/cmp-nvim-lsp', lazy = true},
-        {'hrsh7th/cmp-nvim-lsp-signature-help', lazy = true},
+        { "hrsh7th/cmp-path", lazy = true },
+        { "hrsh7th/cmp-buffer", lazy = true },
+        { "hrsh7th/cmp-cmdline", lazy = true },
+        { "hrsh7th/cmp-nvim-lsp", lazy = true },
+        { "hrsh7th/cmp-nvim-lsp-signature-help", lazy = true },
 
         {
-            'L3MON4D3/LuaSnip',
+            "L3MON4D3/LuaSnip",
             dependencies = {
-                'rafamadriz/friendly-snippets',
+                "rafamadriz/friendly-snippets",
             },
         },
-        {'saadparwaiz1/cmp_luasnip', lazy = true},
+        { "saadparwaiz1/cmp_luasnip", lazy = true },
     },
 
     config = function()
-        local cmp = require('cmp')
-        local luasnip = require('luasnip')
+        local cmp = require("cmp")
+        local luasnip = require("luasnip")
 
         local cmp_sources = {
             { name = "neorg", group_index = 1 },
@@ -82,24 +82,24 @@ hvim.pack {
             preselect = cmp.PreselectMode.None,
 
             snippet = {
-                expand = function (args)
+                expand = function(args)
                     luasnip.lsp_expand(args.body)
                 end,
             },
 
             mapping = {
-                ["<C-p>"] = cmp.mapping.select_prev_item(),                
-                ["<C-n>"] = cmp.mapping.select_next_item(),                
+                ["<C-p>"] = cmp.mapping.select_prev_item(),
+                ["<C-n>"] = cmp.mapping.select_next_item(),
 
-                ["<C-d>"] = cmp.mapping.scroll_docs(-4),                
-                ["<C-f>"] = cmp.mapping.scroll_docs(4),                
+                ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+                ["<C-f>"] = cmp.mapping.scroll_docs(4),
 
                 ["<C-Space>"] = cmp.mapping.complete(),
                 ["<C-e>"] = cmp.mapping.close(),
 
                 ["<C-y>"] = cmp.mapping.confirm(),
 
-                ["<Tab>"] = cmp.mapping(function (fallback)
+                ["<Tab>"] = cmp.mapping(function(fallback)
                     if cmp.visible() then
                         cmp.select_next_item()
                     elseif luasnip.expand_or_jumpable() then
@@ -111,7 +111,7 @@ hvim.pack {
                     end
                 end, { "i", "s" }),
 
-                ["<S-Tab>"] = cmp.mapping(function (fallback)
+                ["<S-Tab>"] = cmp.mapping(function(fallback)
                     if cmp.visible() then
                         cmp.select_prev_item()
                     elseif luasnip.jumpable(-1) then
@@ -126,7 +126,7 @@ hvim.pack {
 
             formatting = {
                 fields = { "kind", "abbr", "menu" },
-                format = function (_, vim_item)
+                format = function(_, vim_item)
                     vim_item.menu = vim_item.kind
                     vim_item.kind = icons[vim_item.kind]
                     return vim_item
@@ -134,8 +134,8 @@ hvim.pack {
             },
         })
 
-        vim.o.completeopt = 'menu,menuone,noselect'
+        vim.o.completeopt = "menu,menuone,noselect"
 
-        require('luasnip.loaders.from_vscode').lazy_load()
+        require("luasnip.loaders.from_vscode").lazy_load()
     end,
-}
+})

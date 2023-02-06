@@ -1,13 +1,13 @@
-local macros = require('core.macros')
+local macros = require("core.macros")
 
-macros.pack {
+macros.pack({
     "akinsho/bufferline.nvim",
     event = "BufAdd",
     opts = {
         options = {
             numbers = "none",
             diagnostics = "nvim_lsp",
-            diagnostics_indicator = function (_, _, dict)
+            diagnostics_indicator = function(_, _, dict)
                 local s = ""
                 for kind, count in pairs(dict) do
                     s = string.format("%s %s %d", s, macros.diagnostic_icons[kind], count)
@@ -25,6 +25,6 @@ macros.pack {
                 { filetype = "NvimTree", text = "Files", text_align = "center" },
                 { filetype = "DiffviewFiles", text = "Source Control", text_align = "center" },
             },
-        }
-    }
-}
+        },
+    },
+})

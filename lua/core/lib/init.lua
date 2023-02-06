@@ -9,7 +9,7 @@ function M.isTable(tbl)
 end
 
 function M.spread(template)
-    return function (tbl)
+    return function(tbl)
         local result = {}
         for key, value in pairs(template) do
             result[key] = value

@@ -1,3 +1,3 @@
-local hvim = require('core.macros')
+local hvim = require("core.macros")
 
-hvim.pack('anuvyklack/hydra.nvim')
+hvim.pack("anuvyklack/hydra.nvim")

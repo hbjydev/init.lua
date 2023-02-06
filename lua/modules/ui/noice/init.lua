@@ -1,19 +1,19 @@
-local hvim = require('core.macros')
+local hvim = require("core.macros")
 
 -- hvim.pack {
 --     'folke/noice.nvim',
---     
+--
 --     dependencies = {
 --         'MunifTanjim/nui.nvim',
 --         'rcarriga/nvim-notify',
 --     },
--- 
+--
 --     config = function()
 --         require('notify').setup {
 --             max_width = 80,
 --             top_down = false
 --         }
--- 
+--
 --         require('noice').setup {
 --             lsp = {
 --                 -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
@@ -23,14 +23,14 @@ local hvim = require('core.macros')
 --                     ["cmp.entry.get_documentation"] = true,
 --                 },
 --             },
--- 
+--
 --             routes = {
 --                 {
 --                     filter = { event = "msg_show", kind = "", find = "written" },
 --                     opts = { skip = true },
 --                 }
 --             },
--- 
+--
 --             -- you can enable a preset for easier configuration
 --             presets = {
 --                 bottom_search = true, -- use a classic bottom cmdline for search

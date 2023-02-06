@@ -1,9 +1,9 @@
-local hvim = require('core.macros')
+local hvim = require("core.macros")
 
-hvim.pack {
+hvim.pack({
     "rktjmp/paperplanes.nvim",
     cmd = "PP",
     opts = {
         provider = "paste.rs",
     },
-}
+})

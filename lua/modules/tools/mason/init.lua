@@ -1,21 +1,21 @@
-local hvim = require('core.macros')
+local hvim = require("core.macros")
 
-hvim.pack {
-    'williamboman/mason.nvim',
+hvim.pack({
+    "williamboman/mason.nvim",
 
     event = "BufRead *",
     cmd = "Mason",
 
     dependencies = {
-        'williamboman/mason-lspconfig.nvim',
-        'folke/neodev.nvim',
+        "williamboman/mason-lspconfig.nvim",
+        "folke/neodev.nvim",
     },
 
-    config = function ()
-        local mlc = require('mason-lspconfig')
-        local lsp = require('lspconfig')
+    config = function()
+        local mlc = require("mason-lspconfig")
+        local lsp = require("lspconfig")
 
-        require('mason').setup {
+        require("mason").setup({
             ui = {
                 border = "solid",
                 icons = {
@@ -24,41 +24,41 @@ hvim.pack {
                     package_uninstalled = "",
                 },
             },
-        }
+        })
 
-        mlc.setup {
+        mlc.setup({
             ensure_installed = {
-                'ansiblels',
-                'bashls',
-                'bufls',
-                'clangd',
-                'cmake',
-                'cssls',
-                'cssmodules_ls',
-                'dockerls',
-                'gopls',
-                'html',
-                'intelephense',
-                'jsonls',
-                'jsonnet_ls',
-                'ltex',
-                'omnisharp',
-                'perlnavigator',
-                'prismals',
-                'pyright',
-                'rnix',
-                'rust_analyzer',
-                'sumneko_lua',
-                'tailwindcss',
-                'terraformls',
-                'tsserver',
-                'volar',
-                'yamlls',
+                "ansiblels",
+                "bashls",
+                "bufls",
+                "clangd",
+                "cmake",
+                "cssls",
+                "cssmodules_ls",
+                "dockerls",
+                "gopls",
+                "html",
+                "intelephense",
+                "jsonls",
+                "jsonnet_ls",
+                "ltex",
+                "omnisharp",
+                "perlnavigator",
+                "prismals",
+                "pylsp",
+                "rnix",
+                "rust_analyzer",
+                "sumneko_lua",
+                "tailwindcss",
+                "terraformls",
+                "tsserver",
+                "volar",
+                "yamlls",
             },
-        }
+        })
 
-        local on_attach = function (_, bufnr)
-            vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+        local on_attach = function(_, bufnr)
+            vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
             local bufopts = { noremap = true, silent = true, buffer = bufnr }
 
@@ -79,24 +79,22 @@ hvim.pack {
             flags = { debounce_text_changes = 150 },
         }
 
-        mlc.setup_handlers {
-            function (server_name)
+        mlc.setup_handlers({
+            function(server_name)
                 lsp[server_name].setup(defaults)
             end,
 
             sumneko_lua = function()
-                local neodev = require('neodev')
-
-                neodev.setup {
+                require("neodev").setup({
                     lspconfig = false,
-                }
+                })
 
-                lsp['sumneko_lua'].setup {
+                lsp["sumneko_lua"].setup({
                     before_init = require("neodev.lsp").before_init,
                     on_attach = on_attach,
                     flags = { debounce_text_changes = 150 },
-                }
+                })
             end,
-        }
+        })
     end,
-}
+})
