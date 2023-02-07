@@ -45,6 +45,7 @@ hvim.modules("ui", {
 
 hvim.modules("completion", {
     "cmp",
+    "vsnip",
 })
 
 hvim.setup()

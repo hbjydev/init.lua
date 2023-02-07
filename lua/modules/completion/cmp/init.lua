@@ -5,6 +5,10 @@ local has_words_before = function()
     return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
+local feedkey = function (key, mode)
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
+end
+
 hvim.pack({
     "hrsh7th/nvim-cmp",
 
@@ -15,27 +19,21 @@ hvim.pack({
         { "hrsh7th/cmp-path", lazy = true },
         { "hrsh7th/cmp-buffer", lazy = true },
         { "hrsh7th/cmp-cmdline", lazy = true },
+        { "hrsh7th/cmp-vsnip", lazy = true },
         { "hrsh7th/cmp-nvim-lsp", lazy = true },
         { "hrsh7th/cmp-nvim-lsp-signature-help", lazy = true },
 
-        {
-            "L3MON4D3/LuaSnip",
-            dependencies = {
-                "rafamadriz/friendly-snippets",
-            },
-        },
-        { "saadparwaiz1/cmp_luasnip", lazy = true },
+        "hrsh7th/vim-vsnip",
     },
 
     config = function()
         local cmp = require("cmp")
-        local luasnip = require("luasnip")
 
         local cmp_sources = {
             { name = "neorg", group_index = 1 },
             { name = "nvim_lsp", group_index = 1 },
             { name = "nvim_lsp_signature_help", group_index = 1 },
-            { name = "luasnip", group_index = 2 },
+            { name = "vsnip", group_index = 2 },
             { name = "buffer", group_index = 3 },
             { name = "path", group_index = 3 },
         }
@@ -83,7 +81,7 @@ hvim.pack({
 
             snippet = {
                 expand = function(args)
-                    luasnip.lsp_expand(args.body)
+                    vim.fn["vsnip#anonymous"](args.body)
                 end,
             },
 
@@ -102,8 +100,8 @@ hvim.pack({
                 ["<Tab>"] = cmp.mapping(function(fallback)
                     if cmp.visible() then
                         cmp.select_next_item()
-                    elseif luasnip.expand_or_jumpable() then
-                        luasnip.expand_or_jump()
+                    elseif vim.fn["vsnip#available"](1) == 1 then
+                        feedkey("<Plug>(vsnip-expand-or-jump)", "")
                     elseif has_words_before() then
                         cmp.complete()
                     else
@@ -111,13 +109,11 @@ hvim.pack({
                     end
                 end, { "i", "s" }),
 
-                ["<S-Tab>"] = cmp.mapping(function(fallback)
+                ["<S-Tab>"] = cmp.mapping(function()
                     if cmp.visible() then
                         cmp.select_prev_item()
-                    elseif luasnip.jumpable(-1) then
-                        luasnip.jump(-1)
-                    else
-                        fallback()
+                    elseif vim.fn["vsnip#jumpable"](-1) == 1 then
+                        feedkey("<Plug>(vsnip-jump-prev)", "")
                     end
                 end, { "i", "s" }),
             },
@@ -134,8 +130,27 @@ hvim.pack({
             },
         })
 
-        vim.o.completeopt = "menu,menuone,noselect"
+        cmp.setup.cmdline('/', {
+            mapping = cmp.mapping.preset.cmdline(),
+            sources = {
+                { name = 'buffer' }
+            }
+        })
 
-        require("luasnip.loaders.from_vscode").lazy_load()
+        cmp.setup.cmdline(':', {
+            mapping = cmp.mapping.preset.cmdline(),
+            sources = cmp.config.sources({
+                { name = 'path' }
+            }, {
+                {
+                    name = 'cmdline',
+                    option = {
+                        ignore_cmds = { 'Man', '!' }
+                    }
+                },
+            })
+        })
+
+        vim.o.completeopt = "menu,menuone,noselect"
     end,
 })
