@@ -12,6 +12,7 @@ hvim.pack({
 
     config = function()
         local mason_null_ls = require("mason-null-ls")
+        local null_ls = require("null-ls")
 
         mason_null_ls.setup({
             ensure_installed = {
@@ -55,6 +56,10 @@ hvim.pack({
 
         mason_null_ls.setup_handlers({})
 
-        require("null-ls").setup()
+        null_ls.setup {
+            sources = {
+                null_ls.builtins.code_actions.gitsigns,
+            }
+        }
     end,
 })
