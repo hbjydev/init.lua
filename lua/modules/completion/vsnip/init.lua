@@ -7,7 +7,11 @@ hvim.pack({
 
     dependencies = {
         "hrsh7th/vim-vsnip-integ",
+
+        -- snippet packs
         "rafamadriz/friendly-snippets",
+        "golang/vscode-go",
+        "sdras/vue-vscode-snippets",
     },
 
     config = function ()
