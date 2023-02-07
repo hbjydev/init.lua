@@ -12,7 +12,10 @@ end
 hvim.pack({
     "hrsh7th/nvim-cmp",
 
-    event = { "InsertEnter" },
+    event = {
+        "InsertEnter",
+        "CmdlineEnter",
+    },
     cmd = "CmpStatus",
 
     dependencies = {
