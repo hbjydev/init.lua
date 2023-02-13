@@ -10,7 +10,7 @@ hvim.pack({ "nvim-lua/plenary.nvim", lazy = true })
 
 hvim.modules("editor", {
     "comment",
-    "fold", -- TODO: Something wrong with mappings I think
+    "fold",
     "todos",
 })
 
