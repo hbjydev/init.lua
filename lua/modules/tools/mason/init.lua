@@ -48,7 +48,7 @@ hvim.pack({
                 "pylsp",
                 "rnix",
                 "rust_analyzer",
-                "sumneko_lua",
+                "lua_ls",
                 "tailwindcss",
                 "terraformls",
                 "tsserver",
@@ -84,12 +84,12 @@ hvim.pack({
                 lsp[server_name].setup(defaults)
             end,
 
-            sumneko_lua = function()
+            lua_ls = function()
                 require("neodev").setup({
                     lspconfig = false,
                 })
 
-                lsp["sumneko_lua"].setup({
+                lsp["lua_ls"].setup({
                     before_init = require("neodev.lsp").before_init,
                     on_attach = on_attach,
                     flags = { debounce_text_changes = 150 },
