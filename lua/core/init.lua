@@ -26,6 +26,7 @@ hvim.modules("tools", {
     "editorconfig",
     "lsp",
     "mason",
+    "neogit",
     "neorg",
     "null-ls",
     "pastebin",
