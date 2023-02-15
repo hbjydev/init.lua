@@ -8,6 +8,13 @@ hvim.init()
 hvim.pack("nyoom-engineering/oxocarbon.nvim")
 hvim.pack({ "nvim-lua/plenary.nvim", lazy = true })
 
+hvim.pack {
+    "giusgad/pets.nvim",
+    dependencies = { "MunifTanjim/nui.nvim", "edluffy/hologram.nvim" },
+    lazy = false,
+    config = true,
+}
+
 hvim.modules("editor", {
     "comment",
     "fold",
