@@ -3,7 +3,6 @@ local hvim = require('core.macros')
 hvim.pack {
     'L3MON4D3/LuaSnip',
     event = "BufRead",
-    build = "make install_jsregexp",
 
     dependencies = {
         "rafamadriz/friendly-snippets",

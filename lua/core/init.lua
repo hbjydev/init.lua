@@ -18,6 +18,7 @@ hvim.pack({ "nvim-lua/plenary.nvim", lazy = true })
 hvim.modules("editor", {
     "comment",
     "fold",
+    "indentline",
     "todos",
 })
 
