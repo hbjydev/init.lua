@@ -1,5 +1,7 @@
 # `init.lua`
 
+![Screenshot](./assets/screenshot.png)
+
 My Neovim config, built again and again and again, but modular this time.
 
 ## Setup
