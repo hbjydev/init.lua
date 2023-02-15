@@ -150,21 +150,17 @@ hvim.pack({
                 ["<C-y>"] = cmp.mapping.confirm(),
 
                 ["<Tab>"] = cmp.mapping(function(fallback)
-                    if cmp.visible() then
-                        cmp.select_next_item()
-                    elseif can_expand() then
+                    if can_expand() then
                         expand()
                     elseif has_words_before() then
-                        cmp.complete()
+                       cmp.complete()
                     else
                         fallback()
                     end
                 end, { "i", "s" }),
 
                 ["<S-Tab>"] = cmp.mapping(function()
-                    if cmp.visible() then
-                        cmp.select_prev_item()
-                    elseif can_jump_back() then
+                    if can_jump_back() then
                         jump_back()
                     end
                 end, { "i", "s" }),
