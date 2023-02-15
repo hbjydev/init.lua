@@ -13,13 +13,13 @@ hvim.pack({
     "hrsh7th/nvim-cmp",
     event = {
         "InsertEnter",
-        "CmdlineEnter",
+        --"CmdlineEnter",
     },
     cmd = "CmpStatus",
     dependencies = {
         { "hrsh7th/cmp-path", lazy = true },
         { "hrsh7th/cmp-buffer", lazy = true },
-        { "hrsh7th/cmp-cmdline", lazy = true },
+        -- { "hrsh7th/cmp-cmdline", lazy = true },
         { "hrsh7th/cmp-vsnip", lazy = true },
         { "saadparwaiz1/cmp_luasnip", lazy = true },
         { "hrsh7th/cmp-nvim-lsp", lazy = true },
@@ -180,26 +180,26 @@ hvim.pack({
             },
         })
 
-        cmp.setup.cmdline("/", {
-            mapping = cmp.mapping.preset.cmdline(),
-            sources = {
-                { name = "buffer" },
-            },
-        })
+        --cmp.setup.cmdline("/", {
+        --    mapping = cmp.mapping.preset.cmdline(),
+        --    sources = {
+        --        { name = "buffer" },
+        --    },
+        --})
 
-        cmp.setup.cmdline(":", {
-            mapping = cmp.mapping.preset.cmdline(),
-            sources = cmp.config.sources({
-                { name = "path" },
-            }, {
-                {
-                    name = "cmdline",
-                    option = {
-                        ignore_cmds = { "Man", "!" },
-                    },
-                },
-            }),
-        })
+        --cmp.setup.cmdline(":", {
+        --    mapping = cmp.mapping.preset.cmdline(),
+        --    sources = cmp.config.sources({
+        --        { name = "path" },
+        --    }, {
+        --        {
+        --            name = "cmdline",
+        --            option = {
+        --                ignore_cmds = { "Man", "!" },
+        --            },
+        --        },
+        --    }),
+        --})
 
         vim.o.completeopt = "menu,menuone,noselect"
     end,
