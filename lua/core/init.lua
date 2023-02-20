@@ -2,6 +2,7 @@ local hvim = require("core.macros")
 
 require("core.remap")
 require("core.set")
+require("core.plugins")
 
 hvim.init()
 
@@ -32,6 +33,7 @@ hvim.modules("tools", {
     "debugger",
     "docker",
     "editorconfig",
+    "impatient",
     "lsp",
     "mason",
     "neogit",
