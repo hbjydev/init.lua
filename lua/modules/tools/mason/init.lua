@@ -68,6 +68,60 @@ hvim.pack({
                 lsp[server_name].setup(defaults)
             end,
 
+            jsonls = function()
+                lsp.jsonls.setup {
+                    on_attach = defaults.on_attach,
+                    flags = defaults.flags,
+
+                    settings = {
+                        json = {
+                            schemas = {
+                                {
+                                    fileMatch = { "tsconfig*.json" },
+                                    url = "https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/tsconfig.json",
+                                }
+                            },
+                        },
+                    },
+                }
+            end,
+
+            yamlls = function()
+                lsp.yamlls.setup {
+                    on_attach = defaults.on_attach,
+                    flags = defaults.flags,
+                    settings = {
+                        yaml = {
+                            customTags = {
+                                "!Base64 scalar",
+                                "!Cidr scalar",
+                                "!And sequence",
+                                "!Equals sequence",
+                                "!If sequence",
+                                "!Not sequence",
+                                "!Or sequence",
+                                "!Condition scalar",
+                                "!FindInMap sequence",
+                                "!GetAtt scalar",
+                                "!GetAtt sequence",
+                                "!GetAZs scalar",
+                                "!ImportValue scalar",
+                                "!Join sequence",
+                                "!Select sequence",
+                                "!Split sequence",
+                                "!Sub scalar",
+                                "!Transform mapping",
+                                "!Ref scalar",
+                            },
+
+                            schemas = {
+                                ["https://s3.amazonaws.com/cfn-resource-specifications-us-east-1-prod/schemas/2.15.0/all-spec.json"] = { "*-template.yaml", "template.yaml" },
+                            },
+                        },
+                    },
+                }
+            end,
+
             lua_ls = function()
                 require("neodev").setup({
                     lspconfig = false,
