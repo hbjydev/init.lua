@@ -56,6 +56,7 @@ hvim.modules("ui", {
 
 hvim.modules("completion", {
     "cmp",
+    "copilot",
     "luasnip",
 })
 

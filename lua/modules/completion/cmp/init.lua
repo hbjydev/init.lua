@@ -24,7 +24,9 @@ hvim.pack({
         { "saadparwaiz1/cmp_luasnip", lazy = true },
         { "hrsh7th/cmp-nvim-lsp", lazy = true },
         { "hrsh7th/cmp-nvim-lsp-signature-help", lazy = true },
+        { "zbirenbaum/copilot-cmp", lazy = true },
 
+        "zbirenbaum/copilot.lua",
         "L3MON4D3/LuaSnip",
     },
     config = function()
@@ -37,6 +39,14 @@ hvim.pack({
             { name = "buffer", group_index = 3 },
             { name = "path", group_index = 3 },
         }
+
+        cmp.event:on("menu_opened", function ()
+            vim.b.copilot_suggestion_hidden = true
+        end)
+
+        cmp.event:on("menu_closed", function ()
+            vim.b.copilot_suggestion_hidden = false
+        end)
 
         local snippet_expander = function(_)
             print("TODO!")
@@ -196,6 +206,8 @@ hvim.pack({
         --        },
         --    }),
         --})
+
+        require("copilot_cmp").setup()
 
         vim.o.completeopt = "menu,menuone,noselect"
     end,

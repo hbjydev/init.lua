@@ -6,7 +6,6 @@ hvim.pack {
 
     dependencies = {
         "rafamadriz/friendly-snippets",
-        "golang/vscode-go",
         "sdras/vue-vscode-snippets",
     },
 
