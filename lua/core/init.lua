@@ -20,6 +20,7 @@ hvim.modules("editor", {
     "comment",
     "fold",
     "indentline",
+    "requirements-syntax",
     "todos",
 })
 
