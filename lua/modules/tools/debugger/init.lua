@@ -65,10 +65,8 @@ hvim.pack {
                 'python',
                 'delve',
             },
-            automatic_setup = true,
+            automatic_installation = true,
         }
-
-        mnd.setup_handlers()
 
         dapui.setup {
             icons = {
