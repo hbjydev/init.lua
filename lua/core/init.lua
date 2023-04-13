@@ -20,7 +20,6 @@ hvim.modules("editor", {
     "comment",
     "fold",
     "indentline",
-    "requirements-syntax",
     "todos",
 })
 
@@ -57,7 +56,7 @@ hvim.modules("ui", {
 
 hvim.modules("completion", {
     "cmp",
-    "copilot",
+--    "copilot",
     "luasnip",
 })
 

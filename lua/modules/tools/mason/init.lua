@@ -86,36 +86,32 @@ hvim.pack({
                 }
             end,
 
-            yamlls = function()
-                lsp.yamlls.setup {
+            ["pylsp"] = function()
+                lsp.pylsp.setup {
                     on_attach = defaults.on_attach,
                     flags = defaults.flags,
                     settings = {
-                        yaml = {
-                            customTags = {
-                                "!Base64 scalar",
-                                "!Cidr scalar",
-                                "!And sequence",
-                                "!Equals sequence",
-                                "!If sequence",
-                                "!Not sequence",
-                                "!Or sequence",
-                                "!Condition scalar",
-                                "!FindInMap sequence",
-                                "!GetAtt scalar",
-                                "!GetAtt sequence",
-                                "!GetAZs scalar",
-                                "!ImportValue scalar",
-                                "!Join sequence",
-                                "!Select sequence",
-                                "!Split sequence",
-                                "!Sub scalar",
-                                "!Transform mapping",
-                                "!Ref scalar",
-                            },
-
-                            schemas = {
-                                ["https://s3.amazonaws.com/cfn-resource-specifications-us-east-1-prod/schemas/2.15.0/all-spec.json"] = { "*-template.yaml", "template.yaml" },
+                        pylsp = {
+                            configurationSources = { "flake8" },
+                            plugins = {
+                                flake8 = {
+                                    enabled = true,
+                                    maxLineLength = 240,
+                                    ignore = {
+                                        "E128", -- Visual indent
+                                        "E402", -- Module-level import not at top of file
+                                    },
+                                },
+                                pycodestyle = {
+                                    enabled = false,
+                                },
+                                pylint = {
+                                    args = { "--max-line-length=240" }
+                                },
+                                rope_autoimport = {
+                                    enabled = true,
+                                    memory = true,
+                                },
                             },
                         },
                     },

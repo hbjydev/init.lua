@@ -20,7 +20,6 @@ hvim.pack({
                 "commitlint",
 
                 -- python
-                "black",
                 "isort",
                 "debugpy",
 
@@ -30,10 +29,6 @@ hvim.pack({
                 "golines",
                 "gomodifytags",
                 "gotests",
-
-                -- php
-                "phpcs",
-                "phpstan",
 
                 -- shell
                 "shellcheck",
