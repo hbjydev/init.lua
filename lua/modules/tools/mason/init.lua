@@ -68,6 +68,19 @@ hvim.pack({
                 lsp[server_name].setup(defaults)
             end,
 
+            yamlls = function()
+                lsp.yamlls.setup {
+                    on_attach = defaults.on_attach,
+                    flags = defaults.flags,
+
+                    settings = {
+                        yaml = {
+                            keyOrdering = false
+                        },
+                    },
+                }
+            end,
+
             jsonls = function()
                 lsp.jsonls.setup {
                     on_attach = defaults.on_attach,
@@ -110,7 +123,6 @@ hvim.pack({
                                 },
                                 rope_autoimport = {
                                     enabled = true,
-                                    memory = true,
                                 },
                             },
                         },
