@@ -54,6 +54,9 @@ hvim.pack({
             sync_install = false,
 
             auto_install = true,
+            ignore_install = {
+                "help",
+            },
 
             highlight = {
                 enable = true,
