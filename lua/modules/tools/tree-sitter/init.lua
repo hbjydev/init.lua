@@ -100,5 +100,16 @@ hvim.pack({
                 "fennel",
             },
         })
+
+        local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+        parser_config.river = {
+            install_info = {
+                url = "https://github.com/grafana/tree-sitter-river",
+                files = { "src/parser.c" },
+            },
+            filetype = "river",
+        }
+
+        vim.treesitter.language.register('river', 'river')
     end,
 })
