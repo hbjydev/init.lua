@@ -37,7 +37,7 @@ hvim.modules("tools", {
     "lsp",
     "mason",
     "neogit",
-    "neorg",
+    -- "neorg",
     "null-ls",
     "pastebin",
     "telescope",
@@ -56,7 +56,7 @@ hvim.modules("ui", {
 
 hvim.modules("completion", {
     "cmp",
---    "copilot",
+    -- "copilot",
     "luasnip",
 })
 
