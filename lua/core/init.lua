@@ -35,6 +35,7 @@ hvim.modules("tools", {
     "editorconfig",
     "impatient",
     "lsp",
+    "lspsaga",
     "mason",
     "neogit",
     -- "neorg",
