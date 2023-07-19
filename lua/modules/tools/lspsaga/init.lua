@@ -12,6 +12,10 @@ hvim.pack({
 
     keys = {
         { "<leader>do", "<cmd>Lspsaga outline<cr>", desc = "Document Outline" },
+
+        { "<leader>fr", "<cmd>Lspsaga finder ref<cr>", desc = "Find references" },
+        { "<leader>fd", "<cmd>Lspsaga finder def<cr>", desc = "Find definitions" },
+        { "<leader>fi", "<cmd>Lspsaga finder imp<cr>", desc = "Find implementations" },
     },
 
     opts = {
