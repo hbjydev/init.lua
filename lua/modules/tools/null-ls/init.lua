@@ -50,6 +50,8 @@ hvim.pack({
         })
 
         null_ls.setup {
+            diagnostics_format = "#{m} (#{s}: #{c})",
+
             should_attach = function (bufnr)
                 return vim.api.nvim_buf_get_name(bufnr):match("^.env")
             end
