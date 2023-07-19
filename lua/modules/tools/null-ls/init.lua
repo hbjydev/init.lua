@@ -45,17 +45,13 @@ hvim.pack({
 
                 -- yaml
                 "yamllint",
-
-                -- rust
-                "rustfmt",
             },
             handlers = {},
         })
 
         null_ls.setup {
-            should_attach = function (_)
-                local is_env = vim.fn.expand("%:t") == ".env"
-                return not is_env
+            should_attach = function (bufnr)
+                return vim.api.nvim_buf_get_name(bufnr):match("^.env")
             end
         }
     end,
